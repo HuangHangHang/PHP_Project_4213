@@ -21,7 +21,6 @@
         </div>
     </div>
     <div class="l-article_r">
-        <!--热门网址-->
         <div class="corner box-hot" monkey="hot">
             <div class="m span-rows box-hot_content">
                 <foreach name="hot_array" item="vo">
@@ -29,17 +28,11 @@
                 </foreach>
             </div>
         </div>
-        <!--热门网址结束-->
-
-        <!--广告位-->
         <div class="span-rows box-adbar" monkey="ad">
             <foreach name="ad_array" item="vo">
                 <span><a href='{$vo.href}' target='_blank'>{$vo.title}</a></span>
             </foreach>
         </div>
-        <!--广告位结束-->
-
-        <!-- 右侧分类 开始 -->
         <div class="box-sort" monkey="cool">
             <ul class="m span-rows box-sort_content">
                 <foreach name="right_array" item="vo" key="key" >
@@ -52,8 +45,6 @@
                     </li>
                 </foreach>
             </ul>
-
-            <!--图片区-->
             <ul class="m span-rows box-sort_content">
                 <h3> <span><a>休闲娱乐</a></span></h3>
                 <div class="flexslider carousel">
@@ -66,7 +57,6 @@
                         </foreach>
                     </ul>
                 </div>
-                <!--轮播展示-->
                 <script type="text/javascript" src="__PUBLIC__/js/jquery.flexslider-min.js"></script>
                 <script type="text/javascript">
                     $(function() {
@@ -85,9 +75,6 @@
                 </script>
             </ul>
         </div>
-        <!-- 右侧分类 结束 -->
-
-        <!--底部开始-->
         <div class="box box-bottom" monkey="footer">
             <div class="box-tools">
                 <ul class="m span-rows box-tools_content">
@@ -103,7 +90,6 @@
                 </ul>
             </div>
         </div>
-        <!--底部结束-->
     </div>
 </div>
 <include file="Common/footer"/>
