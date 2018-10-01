@@ -1,0 +1,110 @@
+<include file="Common/header" />
+<include file="Common/top" />
+
+<div class="box l-article clearfix">
+    <div class="l-article_l">
+        <div class="box-leftbar" monkey="leftbar">
+            <div class="box-leftbar_inner">
+                <div monkey="service">
+                    <foreach name="left_array" item="vo" key="key">
+                        <dl class="corner box-sidebar">
+                            <dt class="m"><span class="box-sidebar_title"><a href="javascript:;">{$key}</a></span></dt>
+                            <dd class="m span-rows box-sidebar_content">
+                                <volist name="vo" id="left">
+                                    <span><a href="{:U('more',array('middle_id'=>$left['id']))}">{$left.middle_name}</a></span>
+                                </volist>
+                            </dd>
+                        </dl>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="l-article_r">
+        <!--热门网址-->
+        <div class="corner box-hot" monkey="hot">
+            <div class="m span-rows box-hot_content">
+                <foreach name="hot_array" item="vo">
+                    <span><a href="{$vo.href}" <eq name="vo.is_recommend" value="1">class="recommend"</eq> >{$vo.title}</a></span>
+                </foreach>
+            </div>
+        </div>
+        <!--热门网址结束-->
+
+        <!--广告位-->
+        <div class="span-rows box-adbar" monkey="ad">
+            <foreach name="ad_array" item="vo">
+                <span><a href='{$vo.href}' target='_blank'>{$vo.title}</a></span>
+            </foreach>
+        </div>
+        <!--广告位结束-->
+
+        <!-- 右侧分类 开始 -->
+        <div class="box-sort" monkey="cool">
+            <ul class="m span-rows box-sort_content">
+                <foreach name="right_array" item="vo" key="key" >
+                    <li>
+                        <span class="box-sort_title"><a href="{:U('more',array('middle_id'=>$key))}" >{$key|get_middle_name_by_id}</a></span>
+                        <span class="box-sort_more"><a href="{:U('more',array('middle_id'=>$key))}" >更多&gt;&gt;</a></span>
+                        <volist name="vo" id="data">
+                            <span><a href="{$data.href}" <if condition="$data.is_hot == 1">class="tc-green"<else/>class=""</if>>{$data.title}</a></span>
+                        </volist>
+                    </li>
+                </foreach>
+            </ul>
+
+            <!--图片区-->
+            <ul class="m span-rows box-sort_content">
+                <h3> <span><a>休闲娱乐</a></span></h3>
+                <div class="flexslider carousel">
+                    <ul class="slides">
+                        <foreach name="pic_array" item="vo">
+                            <li>
+                                <a href="{$vo.href}"><img src="{$vo.picture|get_cover_url}"/></a>
+                                <span>{$vo.title}</span>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+                <!--轮播展示-->
+                <script type="text/javascript" src="__PUBLIC__/js/jquery.flexslider-min.js"></script>
+                <script type="text/javascript">
+                    $(function() {
+                        $(".flexslider").flexslider({
+                            animation: "slide",
+                            animationLoop: false,
+                            itemWidth: 210,
+                            itemMargin: 5,
+                            minItems: 5,
+                            maxItems: 4,
+                            animationLoop:true,
+                            slideshowSpeed:3000,
+                            // pausePlay: true
+                        });
+                    });
+                </script>
+            </ul>
+        </div>
+        <!-- 右侧分类 结束 -->
+
+        <!--底部开始-->
+        <div class="box box-bottom" monkey="footer">
+            <div class="box-tools">
+                <ul class="m span-rows box-tools_content">
+                    <foreach name="bottom_array" item="vo" key="key">
+                        <li>
+                            <span class="box-tools_title"><a href="javascript:;">{$key}</a></span>
+                            <span class="box-tools_more"><a href="javascript:;">更多&gt;&gt;</a></span>
+                            <volist name="vo" id="bottom">
+                                <span><a href="{$bottom.href}" <if condition="$bottom.is_hot == 1">class="tc-green"<else/>class=""</if>>{$bottom.title}</a></span>
+                            </volist>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+        <!--底部结束-->
+    </div>
+</div>
+<include file="Common/footer"/>
+
