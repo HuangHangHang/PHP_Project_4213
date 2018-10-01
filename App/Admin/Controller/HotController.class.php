@@ -6,10 +6,10 @@ use Think\Controller;
 class HotController extends BaseController {
 
     public function lists(){
-        $keyword = I('keyword','','trim');      //过滤开头结尾空格
+        $keyword = I('keyword','','trim');      
         if($keyword){
-            $map['title'] = array('like',"%$keyword%");//模糊查询
-            $this->assign('keyword',$keyword);  //输出数据
+            $map['title'] = array('like',"%$keyword%");
+            $this->assign('keyword',$keyword);  
         }
         $map['type'] = I('type',0,'int');
         $row   = 10;
@@ -24,9 +24,6 @@ class HotController extends BaseController {
         $this->display();
     }
 
-    /**
-     * 新增 or 编辑
-     */
     public function add(){
         $hot = M('hot');
         if(IS_POST){
